@@ -21,36 +21,39 @@ public class DataGenerator {
             .log(LogDetail.ALL)
             .build();
 
-    public static final Faker  FAKER = new Faker(new Locale("en")); //рандомный пользователь на английском
+    public static final Faker FAKER = new Faker(new Locale("en")); //рандомный пользователь на английском
 
     private DataGenerator() {
     }
 
-    public static Registration.RegistrationDto sendRequest (Registration.RegistrationDto user ) {
-        // сам запрос
-        given() // "дано"
-                .spec(requestSpec) // указываем, какую спецификацию используем
-                .body( user ) // передаём в теле объект, который будет преобразован в JSON
-                .when() // "когда"
-                .post("/api/system/users") // на какой путь относительно BaseUri отправляем запрос
-                .then() // "тогда ожидаем"
-                .statusCode(200); // код 200 OK
+    private static Registration.RegistrationDto sendRequest(Registration.RegistrationDto user) {
+        given()
+                .spec(requestSpec)
+                .body(user)
+                .when()
+                .post("api/system/users")
+                .then()
+                .statusCode(200);
         return user;
     }
-    public static String getRandomLogin(){
+
+    public static String getRandomLogin() {
         return FAKER.name().username(); //рандомный логин
     }
+
     public static String getRandomPassword() {
         return FAKER.internet().password(); //рандомный пароль
     }
+
     public static class Registration {
-        private Registration (){
+        private Registration() {
         }
 
-        public static RegistrationDto getUser(String status){
-            return new RegistrationDto(getRandomLogin() ,getRandomPassword() ,status );
+        public static RegistrationDto getUser(String status) {
+            return new RegistrationDto(getRandomLogin(), getRandomPassword(), status);
         } //случайный незарегистрированный пользователь
-        public static RegistrationDto getRegisteredUser(String status){
+
+        public static RegistrationDto getRegisteredUser(String status) {
             return sendRequest(getUser(status)); //регистрация пользователя
         }
 
@@ -62,4 +65,5 @@ public class DataGenerator {
         }
     }
 }
+
 
