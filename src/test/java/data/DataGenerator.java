@@ -6,7 +6,7 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import lombok.Value;
+import lombok.Value ;
 
 import java.util.Locale;
 
@@ -21,12 +21,11 @@ public class DataGenerator {
             .log(LogDetail.ALL)
             .build();
 
-    public static final Faker FAKER = new Faker(new Locale("en")); //рандомный пользователь на английском
-
+    private  static final Faker FAKER = new Faker(new Locale("en")); //рандомный пользователь на английском
     private DataGenerator() {
     }
 
-    private static Registration.RegistrationDto sendRequest(Registration.RegistrationDto user) {
+    private static <RegistrationDto> RegistrationDto sendRequest(RegistrationDto user) {
         given()
                 .spec(requestSpec)
                 .body(user)

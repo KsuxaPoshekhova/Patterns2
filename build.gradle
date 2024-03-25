@@ -14,17 +14,28 @@ repositories {
 
 dependencies {
 
-    testImplementation 'io.rest-assured:rest-assured:4.3.0'
-    testImplementation 'com.google.code.gson:gson:2.9.1'
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.0'
-    testImplementation 'com.codeborne:selenide:6.17.2'
-    testImplementation 'com.github.javafaker:javafaker:1.0.2'
-    testCompileOnly 'org.projectlombok:lombok:1.18.30'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
-    //testImplementation 'org.slf4j:slf4j-simple:2.0.3'
 
-    //compileOnly 'org.projectlombok:lombok:1.18.30'
-   // annotationProcessor 'org.projectlombok:lombok:1.18.30'
+    // https://mvnrepository.com/artifact/com.google.code.gson/gson
+    implementation 'com.google.code.gson:gson:2.9.1'
+
+    // https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    testImplementation 'io.rest-assured:rest-assured:4.3.0'
+
+    // https://mvnrepository.com/artifact/com.codeborne/selenide
+    implementation 'com.codeborne:selenide:6.17.2'
+
+    // https://mvnrepository.com/artifact/com.github.javafaker/javafaker
+    implementation 'com.github.javafaker:javafaker:1.0.2'
+
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.32'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.32'
+    implementation 'org.slf4j:slf4j-api:2.0.3'
+
 
 
 }
